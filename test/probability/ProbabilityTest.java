@@ -40,4 +40,14 @@ class ProbabilityTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shouldReturnProbabilityOfHappeningAtLeastOneEvent() throws InvalidProbabilityException {
+        Probability firstProbability = Probability.create(0.5D);
+        Probability secondProbability = Probability.create(0.5D);
+        Probability actual = firstProbability.or(secondProbability);
+        Probability exptected = Probability.create(0.75D);
+
+        assertEquals(exptected, actual);
+    }
 }

@@ -29,11 +29,15 @@ class Probability {
         return Double.compare(that.value, value) == 0;
     }
 
-    Probability not() throws InvalidProbabilityException {
+    Probability not() {
         return new Probability(MAXIMUM_PROBABILITY - this.value);
     }
 
-    Probability and(Probability anotherProbability) throws InvalidProbabilityException {
+    Probability and(Probability anotherProbability) {
         return new Probability(this.value * anotherProbability.value);
+    }
+
+    Probability or(Probability anotherProbability) {
+        return new Probability(this.value + anotherProbability.value - this.and(anotherProbability).value);
     }
 }
