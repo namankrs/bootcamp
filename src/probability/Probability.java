@@ -5,12 +5,17 @@ class Probability {
     private static final double MAXIMUM_PROBABILITY = 1D;
     private final double value;
 
-    Probability(double value) throws InvalidProbabilityException {
-        validate(value);
+    private Probability(double value) {
         this.value = value;
     }
 
-    private void validate(double value) throws InvalidProbabilityException {
+    static Probability create(double value) throws InvalidProbabilityException {
+        validate(value);
+        return new Probability(value);
+    }
+
+
+    private static void validate(double value) throws InvalidProbabilityException {
         if (value < MINIMUM_PROBABILITY || value > MAXIMUM_PROBABILITY) {
             throw new InvalidProbabilityException("Invalid value for probability");
         }
@@ -24,11 +29,11 @@ class Probability {
         return Double.compare(that.value, value) == 0;
     }
 
-    Probability calculateImprobability() throws InvalidProbabilityException {
+    Probability not() throws InvalidProbabilityException {
         return new Probability(MAXIMUM_PROBABILITY - this.value);
     }
 
-    Probability combine(Probability anotherProbability) throws InvalidProbabilityException {
+    Probability and(Probability anotherProbability) throws InvalidProbabilityException {
         return new Probability(this.value * anotherProbability.value);
     }
 }
