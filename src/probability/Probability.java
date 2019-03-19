@@ -27,4 +27,8 @@ class Probability {
     Probability calculateImprobability() throws InvalidProbabilityException {
         return new Probability(MAXIMUM_PROBABILITY - this.value);
     }
+
+    Probability combine(Probability anotherProbability) throws InvalidProbabilityException {
+        return new Probability(this.value * anotherProbability.value);
+    }
 }

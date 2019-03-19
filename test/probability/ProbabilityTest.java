@@ -29,4 +29,15 @@ class ProbabilityTest {
         Probability expected = new Probability(0.5D);
         assertEquals(expected, improbability);
     }
+
+    @Test
+    void shouldReturnCombinedProbability() throws InvalidProbabilityException {
+        Probability firstProbability = new Probability(0.5D);
+        Probability secondProbability = new Probability(0.5D);
+
+        Probability actual = firstProbability.combine(secondProbability);
+        Probability expected = new Probability(0.25D);
+
+        assertEquals(expected, actual);
+    }
 }
