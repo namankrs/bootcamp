@@ -22,7 +22,7 @@ class ProbabilityTest {
     }
 
     @Test
-    void shouldReturnProbablityOfNotHappeningOfEvent() throws InvalidProbabilityException {
+    void shouldReturnProbabilityOfNotHappeningOfEvent() throws InvalidProbabilityException {
         Probability probability = Probability.create(0.5);
         Probability improbability = probability.not();
 
@@ -46,8 +46,8 @@ class ProbabilityTest {
         Probability firstProbability = Probability.create(0.5D);
         Probability secondProbability = Probability.create(0.5D);
         Probability actual = firstProbability.or(secondProbability);
-        Probability exptected = Probability.create(0.75D);
+        Probability expected = Probability.create(0.75D);
 
-        assertEquals(exptected, actual);
+        assertEquals(expected, actual);
     }
 }
