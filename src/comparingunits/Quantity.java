@@ -23,8 +23,13 @@ class Quantity {
         if (this == anotherQuantity) return true;
         if (getClass() != anotherQuantity.getClass()) return false;
         Quantity otherQuantity = (Quantity) anotherQuantity;
-        if (!this.unit.isOfSameType(otherQuantity.unit)) return false;
+        if (this.unit.isNotOfSameType(otherQuantity.unit)) return false;
         return this.convertToBaseUnit().equals(otherQuantity.convertToBaseUnit());
     }
 
+    Quantity add(Quantity otherQuantity) throws IncompatibleTypeException {
+        if(this.unit.isNotOfSameType(otherQuantity.unit)) throw new IncompatibleTypeException();
+        return new Quantity(this.unit,this.value.add(otherQuantity.value));
+
+    }
 }

@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class QuantityTest {
     @Test
@@ -43,5 +42,17 @@ class QuantityTest {
         assertNotEquals(oneGallon, oneMillimeter);
     }
 
+    @Test
+    void addShouldAddIfGivenQuantitiesHaveSameUnit() throws IncompatibleTypeException {
+        Quantity oneInch = new Quantity(Unit.INCH, new BigDecimal(1));
+        Quantity twoInch = new Quantity(Unit.INCH, new BigDecimal(2));
+        assertEquals(twoInch, oneInch.add(oneInch));
+    }
 
+    @Test
+    void addShouldThrowExceptionIfGivenQuantitiesHaveDifferentUnit() {
+        Quantity oneInch = new Quantity(Unit.INCH, new BigDecimal(1));
+        Quantity oneGallon = new Quantity(Unit.GALLON, new BigDecimal(1));
+        assertThrows(IncompatibleTypeException.class, () -> oneInch.add(oneGallon));
+    }
 }

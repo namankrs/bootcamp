@@ -24,8 +24,8 @@ class Unit {
         this.type = type;
     }
 
-    boolean isOfSameType(Unit otherUnit) {
-        return this.type == otherUnit.type;
+    boolean isNotOfSameType(Unit otherUnit) {
+        return this.type != otherUnit.type;
     }
 
     BigDecimal convertToBaseUnit(BigDecimal value) {
