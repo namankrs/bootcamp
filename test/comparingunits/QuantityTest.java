@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class QuantityTest {
     @Test
@@ -34,4 +35,13 @@ class QuantityTest {
         Quantity equivalentLitre = new Quantity(Unit.LITRE, new BigDecimal(3.78));
         assertEquals(oneGallon, equivalentLitre);
     }
+
+    @Test
+    void shouldNotCompareOneGallonWithOneMillimeter() {
+        Quantity oneGallon = new Quantity(Unit.GALLON, new BigDecimal(1));
+        Quantity oneMillimeter = new Quantity(Unit.MILLIMETER, new BigDecimal(3.78));
+        assertNotEquals(oneGallon, oneMillimeter);
+    }
+
+
 }

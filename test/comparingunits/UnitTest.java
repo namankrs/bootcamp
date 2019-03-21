@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UnitTest {
 
@@ -13,7 +13,7 @@ class UnitTest {
         Unit feet = Unit.FEET;
         BigDecimal actual = feet.convertToBaseUnit(new BigDecimal(1));
         BigDecimal expected = new BigDecimal(300);
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
 

@@ -11,6 +11,7 @@ class Quantity {
         this.value = value;
     }
 
+
     private BigDecimal convertToBaseUnit() {
         return BigDecimal.valueOf(this.unit.convertToBaseUnit(this.value).floatValue());
     }
@@ -21,8 +22,9 @@ class Quantity {
         if (!(anotherQuantity instanceof Quantity)) return false;
         if (this == anotherQuantity) return true;
         if (getClass() != anotherQuantity.getClass()) return false;
-        Quantity quantity = (Quantity) anotherQuantity;
-        return this.convertToBaseUnit().equals(quantity.convertToBaseUnit());
+        Quantity otherQuantity = (Quantity) anotherQuantity;
+        if (!this.unit.isOfSameType(otherQuantity.unit)) return false;
+        return this.convertToBaseUnit().equals(otherQuantity.convertToBaseUnit());
     }
 
 }
