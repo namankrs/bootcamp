@@ -10,7 +10,7 @@ class UnitTest {
 
     @Test
     void convertToBaseUnit() {
-        Unit feet = Unit.feet;
+        Unit feet = Unit.FEET;
         BigDecimal actual = feet.convertToBaseUnit(new BigDecimal(1));
         BigDecimal expected = new BigDecimal(300);
         assertEquals(expected,actual);
