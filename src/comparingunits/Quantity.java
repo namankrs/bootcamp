@@ -12,12 +12,12 @@ class Quantity {
         this.value = value;
     }
 
-    private BigDecimal convertToInches() {
+    private BigDecimal convertToBaseUnit() {
         return this.unit.convertToBaseUnit(this.value);
     }
 
     boolean compareWith(Quantity quantity) {
-        return this.convertToInches().equals(quantity.convertToInches());
+        return this.convertToBaseUnit().equals(quantity.convertToBaseUnit());
     }
 
     @Override
