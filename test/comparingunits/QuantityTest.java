@@ -44,7 +44,7 @@ class QuantityTest {
     }
 
     @Test
-    void shouldAddQuantitiesWithSameUnits() throws IncompatibleTypeException {
+    void shouldAddQuantitiesWithSameUnits() throws IncompatibleTypeException, InvalidOperationException {
         Quantity oneInch = new Quantity(UnitWithRatio.INCH, new BigDecimal(1));
         Quantity twoInch = new Quantity(UnitWithRatio.INCH, new BigDecimal(2));
         assertEquals(twoInch, oneInch.add(oneInch));
@@ -58,7 +58,7 @@ class QuantityTest {
     }
 
     @Test
-    void shouldAddValuesInDifferentUnitsAndReturnSumInInches() throws IncompatibleTypeException {
+    void shouldAddValuesInDifferentUnitsAndReturnSumInInches() throws IncompatibleTypeException, InvalidOperationException {
         Quantity twoInch = new Quantity(UnitWithRatio.INCH, new BigDecimal(2));
         Quantity twoPointFiveCentimeter = new Quantity(UnitWithRatio.CENTIMETER, new BigDecimal(2.5));
         Quantity threeInch = new Quantity(UnitWithRatio.INCH, new BigDecimal(3));
@@ -66,7 +66,7 @@ class QuantityTest {
     }
 
     @Test
-    void shouldAddTwoDifferentUnitsOtherThanInchesAndReturnSumInInches() throws IncompatibleTypeException {
+    void shouldAddTwoDifferentUnitsOtherThanInchesAndReturnSumInInches() throws IncompatibleTypeException, InvalidOperationException {
         Quantity oneFeet = new Quantity(UnitWithRatio.FEET, new BigDecimal(1));
         Quantity threeHundredCentimeter = new Quantity(UnitWithRatio.CENTIMETER, new BigDecimal(30));
         Quantity twoFeet = new Quantity(UnitWithRatio.FEET, new BigDecimal(2));
@@ -81,10 +81,9 @@ class QuantityTest {
     }
 
     @Test
-    void shouldAddHundredCelsiusAndHundredCelsius() throws IncompatibleTypeException {
+    void shouldThrowExceptionForAddingTemperatures() {
         Quantity hundredCelsius = new Quantity(UnitWithRatioAndScale.CELSIUS, new BigDecimal(100));
-        Quantity twoHundredCelsius = new Quantity(UnitWithRatioAndScale.CELSIUS, new BigDecimal(200));
-        assertEquals(twoHundredCelsius, hundredCelsius.add(hundredCelsius));
+        assertThrows(InvalidOperationException.class, () -> hundredCelsius.add(hundredCelsius));
 
     }
 }

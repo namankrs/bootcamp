@@ -29,4 +29,12 @@ class UnitWithRatioAndScale extends Unit {
         return (value.divide(this.conversionRatio, RoundingMode.HALF_UP)).subtract(this.scale);
 
     }
+
+    @Override
+    Boolean isSummable() {
+        return false;
+    }
+
+
 }
+

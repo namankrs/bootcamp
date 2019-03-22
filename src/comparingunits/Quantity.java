@@ -27,8 +27,9 @@ class Quantity {
         return this.convertToBaseUnit().equals(otherQuantity.convertToBaseUnit());
     }
 
-    Quantity add(Quantity otherQuantity) throws IncompatibleTypeException {
+    Quantity add(Quantity otherQuantity) throws IncompatibleTypeException, InvalidOperationException {
         if (this.unit.isNotOfSameType(otherQuantity.unit)) throw new IncompatibleTypeException();
+        if (!this.unit.isSummable()) throw new InvalidOperationException();
         BigDecimal addedValueInBaseUnit = this.convertToBaseUnit().add(otherQuantity.convertToBaseUnit());
         BigDecimal valueInThisUnit = this.unit.convertToUnit(addedValueInBaseUnit);
         return new Quantity(this.unit, valueInThisUnit);
