@@ -28,8 +28,9 @@ class Quantity {
     }
 
     Quantity add(Quantity otherQuantity) throws IncompatibleTypeException {
-        if(this.unit.isNotOfSameType(otherQuantity.unit)) throw new IncompatibleTypeException();
-        return new Quantity(this.unit,this.value.add(otherQuantity.value));
-
+        if (this.unit.isNotOfSameType(otherQuantity.unit)) throw new IncompatibleTypeException();
+        BigDecimal addedValueInBaseUnit = this.convertToBaseUnit().add(otherQuantity.convertToBaseUnit());
+        BigDecimal valueInThisUnit = this.unit.convertToUnit(addedValueInBaseUnit);
+        return new Quantity(this.unit, valueInThisUnit);
     }
 }

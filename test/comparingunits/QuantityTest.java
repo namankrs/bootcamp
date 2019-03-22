@@ -55,4 +55,20 @@ class QuantityTest {
         Quantity oneGallon = new Quantity(Unit.GALLON, new BigDecimal(1));
         assertThrows(IncompatibleTypeException.class, () -> oneInch.add(oneGallon));
     }
+
+    @Test
+    void shouldAddTwoInchAndTwoPointFiveCentimeterAndReturnInInches() throws IncompatibleTypeException {
+        Quantity twoInch = new Quantity(Unit.INCH, new BigDecimal(2));
+        Quantity twoPointFiveCentimeter = new Quantity(Unit.CENTIMETER, new BigDecimal(2.5));
+        Quantity threeInch = new Quantity(Unit.INCH, new BigDecimal(3));
+        assertEquals(threeInch, twoInch.add(twoPointFiveCentimeter));
+    }
+
+    @Test
+    void shouldAddTwoDifferentUnitsOtherThanInchesAndReturnSumInInches() throws IncompatibleTypeException {
+        Quantity oneFeet = new Quantity(Unit.FEET, new BigDecimal(1));
+        Quantity threeHundredCentimeter = new Quantity(Unit.CENTIMETER, new BigDecimal(30));
+        Quantity twoFeet = new Quantity(Unit.FEET, new BigDecimal(2));
+        assertEquals(twoFeet,oneFeet.add(threeHundredCentimeter));
+    }
 }
