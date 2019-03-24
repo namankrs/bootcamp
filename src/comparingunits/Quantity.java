@@ -3,7 +3,7 @@ package comparingunits;
 import java.math.BigDecimal;
 
 class Quantity {
-    private Unit unit;
+    Unit unit;
     private BigDecimal value;
 
     Quantity(Unit unit, BigDecimal value) {
@@ -12,7 +12,7 @@ class Quantity {
     }
 
 
-    private BigDecimal convertToBaseUnit() {
+    BigDecimal convertToBaseUnit() {
         return BigDecimal.valueOf(this.unit.convertToBaseUnit(this.value).floatValue());
     }
 
@@ -25,13 +25,5 @@ class Quantity {
         Quantity otherQuantity = (Quantity) anotherQuantity;
         if (this.unit.isNotOfSameType(otherQuantity.unit)) return false;
         return this.convertToBaseUnit().equals(otherQuantity.convertToBaseUnit());
-    }
-
-    Quantity add(Quantity otherQuantity) throws IncompatibleTypeException, InvalidOperationException {
-        if (this.unit.isNotOfSameType(otherQuantity.unit)) throw new IncompatibleTypeException();
-        if (!this.unit.isSummable()) throw new InvalidOperationException();
-        BigDecimal addedValueInBaseUnit = this.convertToBaseUnit().add(otherQuantity.convertToBaseUnit());
-        BigDecimal valueInThisUnit = this.unit.convertToUnit(addedValueInBaseUnit);
-        return new Quantity(this.unit, valueInThisUnit);
     }
 }

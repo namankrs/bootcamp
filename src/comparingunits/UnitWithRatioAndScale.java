@@ -30,11 +30,6 @@ class UnitWithRatioAndScale extends Unit {
 
     }
 
-    @Override
-    Boolean isSummable() {
-        return false;
-    }
-
 
 }
 

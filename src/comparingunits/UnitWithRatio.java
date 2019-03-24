@@ -36,10 +36,6 @@ class UnitWithRatio extends Unit {
 
     }
 
-    @Override
-    Boolean isSummable() {
-        return true;
-    }
 
     @Override
     BigDecimal convertToBaseUnit(BigDecimal value) {

@@ -20,9 +20,6 @@ abstract class Unit {
 
     abstract BigDecimal convertToUnit(BigDecimal value);
 
-    abstract Boolean isSummable();
-
-
     enum Type {
         LENGTH,
         VOLUME,
