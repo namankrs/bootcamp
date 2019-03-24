@@ -55,7 +55,7 @@ class IntegerMatrixTest {
     }
 
     @Test
-    void shouldMultiplyMatrix() {
+    void shouldMultiplyMatrix() throws IllegalMatrixSizeForOperationException {
         IntegerMatrix matrixOperations = new IntegerMatrix(matrix);
         List<List<Integer>> resultedMatrix = new ArrayList<>();
         resultedMatrix.add(Arrays.asList(6, 12, 18));
@@ -69,7 +69,7 @@ class IntegerMatrixTest {
     }
 
     @Test
-    void shouldMultiplyDifferentSizeMatrix() {
+    void shouldMultiplyDifferentSizeMatrix() throws IllegalMatrixSizeForOperationException {
         List<List<Integer>> matrixToMultiply = new ArrayList<>();
         matrixToMultiply.add(Arrays.asList(1, 2, 3));
         matrixToMultiply.add(Arrays.asList(4, 5, 6));
@@ -89,39 +89,4 @@ class IntegerMatrixTest {
 
         assertEquals(expected, actual);
     }
-
-//    @Test
-//    void shouldTransposeTheMatrix() {
-//        IntegerMatrix matrix = new IntegerMatrix (this.matrix);
-//
-//        List<List<Integer>> resultedMatrix = new ArrayList<>();
-//        resultedMatrix.add(Arrays.asList(1,1,1));
-//        resultedMatrix.add(Arrays.asList(2,2,2));
-//        resultedMatrix.add(Arrays.asList(3,3,3));
-//
-//        IntegerMatrix expected = new IntegerMatrix (resultedMatrix);
-//        IntegerMatrix actual = matrix.transpose();
-//
-//        assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    void shouldTransposeNonSquareMatrix() {
-//        List<List<Integer>> nonSquareMatrix = new ArrayList<>();
-//        nonSquareMatrix.add(Arrays.asList(1,1));
-//        nonSquareMatrix.add(Arrays.asList(2,2));
-//        nonSquareMatrix.add(Arrays.asList(3,3));
-//
-//        IntegerMatrix matrix = new IntegerMatrix (nonSquareMatrix);
-//
-//        List<List<Integer>> resultedMatrix = new ArrayList<>();
-//        resultedMatrix.add(Arrays.asList(1,2,3));
-//        resultedMatrix.add(Arrays.asList(1,2,3));
-//
-//        IntegerMatrix expected = new IntegerMatrix (resultedMatrix);
-//        IntegerMatrix actual = matrix.transpose();
-//
-//        assertEquals(expected, actual);
-//    }
-
 }
