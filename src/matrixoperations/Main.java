@@ -7,20 +7,20 @@ public class Main {
     public static void main(String[] args) throws IllegalMatrixSizeForOperationException {
 
 
-//        Matrix<Integer> integerMatrix = new Matrix<>(Arrays.asList(Arrays.asList(1, 2),
+//        Matrix<Integer> numberMatrix = new Matrix<>(Arrays.asList(Arrays.asList(1, 2),
 //                Arrays.asList(1, 2)));
-//        Matrix transpose = integerMatrix.transpose();
+//        Matrix transpose = numberMatrix.transpose();
 //        transpose.print();
 
-        IntegerMatrix integerMatrix = new IntegerMatrix(Arrays.asList(Arrays.asList(1, 2),
-                Arrays.asList(1, 2)));
-        IntegerMatrix sumOfMatrices = integerMatrix.add(integerMatrix);
-        sumOfMatrices.print();
-        IntegerMatrix difference = integerMatrix.subtract(integerMatrix);
-        difference.print();
-
-        IntegerMatrix multiply = integerMatrix.multiply(integerMatrix);
-        multiply.print();
+//        NumberMatrix numberMatrix = new NumberMatrix(Arrays.asList(Arrays.asList(1, 2),
+//                Arrays.asList(1, 2)));
+//        NumberMatrix sumOfMatrices = numberMatrix.add(numberMatrix);
+//        sumOfMatrices.print();
+//        NumberMatrix difference = numberMatrix.subtract(numberMatrix);
+//        difference.print();
+//
+//        NumberMatrix multiply = numberMatrix.multiply(numberMatrix);
+//        multiply.print();
     }
 
 }
