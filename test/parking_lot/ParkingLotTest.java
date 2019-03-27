@@ -11,7 +11,7 @@ class ParkingLotTest {
 
     @BeforeEach
     void setUp() {
-        attendant = new Attendant();
+        attendant = new Attendant(Display.getDisplay());
         parkingLot1 = new ParkingLot(2, attendant);
         parkingLot2 = new ParkingLot(2, attendant);
     }
@@ -71,6 +71,10 @@ class ParkingLotTest {
 class MockAttendant extends Attendant {
     boolean isCalledForUnparking = false;
     boolean isCalledForFullParking = false;
+
+    MockAttendant() {
+        super(Display.getDisplay());
+    }
 
     @Override
     void notifyForFullParking(Integer parkingLotId) {

@@ -3,7 +3,7 @@ package parking_lot;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ParkingLot {
+class ParkingLot {
     private static Integer latestId = 1;
     private Set<Car> cars;
     private Attendant attendant;
@@ -13,22 +13,47 @@ public class ParkingLot {
     ParkingLot(Integer capacity, Attendant attendant) {
         this.capacity = capacity;
         this.cars = new HashSet<>();
-        this.attendant = attendant;
         this.id = latestId;
+        setAttendant(attendant);
         latestId++;
     }
+
+    private void setAttendant(Attendant attendant) {
+        this.attendant = attendant;
+        attendant.register(this);
+    }
+
 
     boolean park(Car car) {
         if (this.cars.size() == capacity) return false;
         if (this.cars.size() == capacity - 1) this.attendant.notifyForFullParking(this.id);
+        this.cars.add(car);
+        notifyAssistant();
 
-        return this.cars.add(car);
+        return true;
+    }
+
+    private void notifyAssistant() {
+        Assistant assistant = new Assistant(Display.getDisplay());
+        assistant.updateDisplay(this.id, this.calculateCarsCount());
     }
 
     boolean unPark(Car car) {
         if (this.cars.size() == this.capacity)
             this.attendant.notifyWhenFullParkingGetsFree(this.id);
 
-        return this.cars.remove(car);
+        this.cars.remove(car);
+        notifyAssistant();
+
+        return true;
+    }
+
+    Integer getId() {
+        return id;
+    }
+
+
+    Integer calculateCarsCount() {
+        return this.cars.size();
     }
 }
