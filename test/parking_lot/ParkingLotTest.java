@@ -11,7 +11,7 @@ class ParkingLotTest {
 
     @BeforeEach
     void setUp() {
-        attendant = new Attendant(Display.getDisplay());
+        attendant = new Attendant(new Assistant(Display.getDisplay()));
         parkingLot1 = new ParkingLot(2, attendant);
         parkingLot2 = new ParkingLot(2, attendant);
     }
@@ -73,7 +73,7 @@ class MockAttendant extends Attendant {
     boolean isCalledForFullParking = false;
 
     MockAttendant() {
-        super(Display.getDisplay());
+        super(new Assistant(Display.getDisplay()));
     }
 
     @Override

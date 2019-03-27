@@ -18,7 +18,7 @@ class Display {
     }
 
 
-    Integer update(Integer parkingLotId, Integer carCount) {
-        return this.details.put(parkingLotId, carCount);
+    void update(Integer parkingLotId, Integer carCount) {
+        this.details.put(parkingLotId, carCount);
     }
 }

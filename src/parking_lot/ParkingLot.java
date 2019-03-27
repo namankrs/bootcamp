@@ -39,6 +39,8 @@ class ParkingLot {
     }
 
     boolean unPark(Car car) {
+        if(!this.cars.contains(car)) return false;
+
         if (this.cars.size() == this.capacity)
             this.attendant.notifyWhenFullParkingGetsFree(this.id);
 
